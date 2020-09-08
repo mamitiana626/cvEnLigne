@@ -3,52 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=*, initial-scale=1.0">
-    <title>Document</title>
+    <title>Mamitiana .R</title>
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">  
     <link rel="stylesheet" href="assets/css/circle.css">  
+
+    <!-- debut test affichage -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <!-- fin test affichage -->
     <style type="text/css">
         .couleurTitre{
             color:white;
         }
+              /********* Superposition simple de texte sur une image *******/
+    /* Conteneur principal */
+    .overlay-image {
+     position: relative;
+     width: 100%;
+    }
+    /* Image originale */
+    .overlay-image .image {
+     display: block;
+     width: 100%;
+     height: auto;
+    }
+    /* Texte original */
+    .overlay-image .text {
+     color: #fff;
+     font-size: 30px;
+     line-height: 1.5em;
+     text-shadow: 2px 2px 2px #000;
+     text-align: center;
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+     width: 100%;
+    }
+        /********* Hover image et texte *******/
+    /* Overlay */
+    .overlay-image .hover {
+     position: absolute;
+     top: 0;
+     height: 100%;
+     width: 100%;
+     opacity: 0;
+     transition: .5s ease;
+    }
+    /* Apparition overlay sur passage souris */
+    .overlay-image:hover .hover {
+     opacity: 1;
+    }
+
+    /********* Hover background et texte uniquement *******/
+    .overlay-image .normal {
+     transition: .5s ease;
+    }
+    .overlay-image:hover .normal {
+     opacity: 0;
+    }
+    .overlay-image .hover {
+     background-color: rgba(0,0,0,0.5);
+    }
+     
+    /*fixé le menu nav bar au top*/
+    
     </style>
     </head>
 <body>
-    <div class="navbar navbar-expand-md navbar-dark bg-dark">
+    <div class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
             <span class="navbar-text">Mamitiana .R</span>
             <button class="navbar-toggler" data-toggle="collapse" data-target="#navbar-content">
                 <span class="navbar-toogler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbar-content">
                 <ul class="navbar-nav ml-auto">
-                <li class="nav-item"><a href="#" class="nav-link active">Présentation</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Diplômes</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Competénces</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Expérience Professionelles</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Loisirs</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
+                <li class="nav-item"><a href="#presentation" class="nav-link active">Présentation</a></li>
+                <li class="nav-item"><a href="#diplome" class="nav-link">Diplômes</a></li>
+                <li class="nav-item"><a href="#competence" class="nav-link">Competénces</a></li>
+                <li class="nav-item"><a href="#experience" class="nav-link">Expérience Professionelles</a></li>
+                <li class="nav-item"><a href="#loisir" class="nav-link">Loisirs</a></li>
+                <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
             </ul>   
             </div>                
         </div>
     <div class="container-fluid">        
         <!-- contenu de l' acceuil -->
-        <div class="row">
-            <img src="assets/images/arbre.jpg" class="rounded-circle m-auto" alt="Cinque Terre" width="250" height="250">
+        <div class="row p-5 p-5" style="height: 525px;" id="acceuil">
+            <img src="assets/images/aina.png" class="rounded-circle m-auto" alt="Cinque Terre" width="250" height="250">
             <div class="col-12 text-center">
-                <p>Aina Mamitiana Ramaroson</p>
-                <p>Développeur web full - stack</p>
+                <p class="element h3 py-2"></p>
+                <p class="element2 h3 text-danger"></p>
             </div>
         </div>
         <!-- contenu de la présentation -->
-        <div class="row">
-            <div class="col-12 text-center bg-dark py-3 couleurTitre">
-                Présentation
-            </div>
-            <div class="col-12 text-justify">
-                Grand passionné des technologies de l’information et de la communication, esprit de compétition, développeur confirmé, spécialisé dans la conception et le développement d’applications web. Reconnu pour son approche pragmatique et ses idées novatrices. 
-            </div>
+        <div class="row" id="presentation" data-aos="zoom-in-up">
+                <div class="col-12 text-center bg-dark py-3 couleurTitre">
+                    Présentation
+                </div>
+                <div class="col-12 text-justify py-5 px-5">
+                    Grand passionné des technologies de l’information et de la communication, esprit de compétition, développeur confirmé, spécialisé dans la conception et le développement d’applications web. Reconnu pour son approche pragmatique et ses idées novatrices. 
+                </div>
         </div>
         <!-- contenu du diplome -->
-        <div class="row">
+        <div class="row" id="diplome" data-aos="zoom-in-up">
             <div class="col-12 text-center bg-dark py-3 couleurTitre">
                 Diplômes
             </div>
@@ -82,11 +139,11 @@
             </div>
         </div>
         <!-- contenu du compétence -->
-        <div class="row">
-           <div class="col-12 bg-dark py-3 couleurTitre">
+        <!-- <div class="row bg-danger" id="competence">
+           <div class="col-12 bg-dark py-3 text-center couleurTitre">
                Compétence en Informatique
            </div>
-           <div class="row col-12">
+           <div class="row px-3 justify-content-center">
                 <div class="col-4"> 
                     <div class="row">                        
                         <center><div class="c100 p75 small">
@@ -160,9 +217,65 @@
                     </div>
                 </div>
             </div>
+        
+        </div> -->
+        <div class="row" id="competence" data-aos="zoom-in-up">
+            <div class="col-12 bg-dark py-3 text-center couleurTitre">
+               Compétence en Informatique
+            </div>
+            <div class="row p-5" style="width: 100%">
+                <div class="col-6" data-aos="flip-right">
+                    <p class="text-center">HTML / CSS</p>
+                    <div class="progress" style="height: 30px;">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 50%;">
+                            50%
+                        </div> 
+                    </div>           
+                </div>
+                <div class="col-6" data-aos="flip-left">
+                    <p class="text-center">Javascript</p>
+                    <div class="progress" style="height: 30px;">
+                        <div class="progress-bar h-5" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 50%;">
+                            50%
+                        </div> 
+                    </div>           
+                </div>
+                <div class="col-6 pt-3" data-aos="flip-right">
+                    <p class="text-center">Framework css Bootstrap</p>
+                    <div class="progress" style="height: 30px;">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 50%;">
+                            50%
+                        </div> 
+                    </div>           
+                </div>
+                <div class="col-6 pt-3" data-aos="flip-left">
+                    <p class="text-center">Framework php CodeIgniter</p>
+                    <div class="progress" style="height: 30px;">
+                        <div class="progress-bar h-5" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 50%;">
+                            50%
+                        </div> 
+                    </div>           
+                </div>
+                <div class="col-6 pt-3" data-aos="flip-right">
+                    <p class="text-center">PHP</p>
+                    <div class="progress" style="height: 30px;">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 50%;">
+                            50%
+                        </div> 
+                    </div>           
+                </div>
+                <div class="col-6 pt-3" data-aos="flip-left">
+                    <p class="text-center">SQL</p>
+                    <div class="progress" style="height: 30px;">
+                        <div class="progress-bar h-5" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 50%;">
+                            50%
+                        </div> 
+                    </div>           
+                </div>
+            </div>
         </div>
         <!-- contenu de la présentation -->
-        <div class="row">
+        <div class="row" data-aos="zoom-in-up">
             <div class="col-12 text-center bg-dark py-3 couleurTitre">
                 Expériences
             </div>
@@ -185,8 +298,117 @@
                 </div>
             </div>
         </div>
-    </div>
+        <!-- contenu loisir -->
+        <div class="row" id="loisir" data-aos="zoom-in-up">
+            <div class="col-12 text-center bg-dark py-3 couleurTitre">
+                Loisirs
+            </div>
+            <div class="row m-0 py-3">
+                <div class="col-4" data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine">
+                    <div class=" overlay-image _b0 " data-toggle="modal" data-target=".modal">               
+                         <img class=" image _b1 " src="assets/images/roi.jpg" alt="Alt text" />
+                         <div class=" normal _b3 ">
+                          <div class=" text _2 ">Jeu d' échec</div>
+                         </div>
+                         <div class=" hover _b2 ">
+                          <img class=" image _b1 " src="assets/images/roi.jpg" alt="Alt text hover" />
+                          <div class=" text _2 ">Voir detail</div>
+                         </div>                 
+                    </div>
+                </div>
+                <div class="col-4" data-aos="fade-up" data-aos-anchor-placement="bottom-bottom">
+                    <div class=" overlay-image _b0 " data-toggle="modal" data-target=".modal">               
+                         <img class=" image _b1 " src="assets/images/roi.jpg" alt="Alt text" />
+                         <div class=" normal _b3 ">
+                          <div class=" text _2 ">Bonsaï</div>
+                         </div>
+                         <div class=" hover _b2 ">
+                          <img class=" image _b1 " src="assets/images/roi.jpg" alt="Alt text hover" />
+                          <div class=" text _2 ">Voir detail</div>
+                         </div>                 
+                    </div>
+                </div>
+                <div class="col-4" data-aos="fade-left" data-aos-offset="300" data-aos-easing="ease-in-sine">
+                    <div class=" overlay-image _b0 " data-toggle="modal" data-target=".modal">               
+                         <img class=" image _b1 " src="assets/images/roi.jpg" alt="Alt text" />
+                         <div class=" normal _b3 ">
+                          <div class=" text _2 ">Basket-BAll</div>
+                         </div>
+                         <div class=" hover _b2 ">
+                          <img class=" image _b1 " src="assets/images/roi.jpg" alt="Alt text hover" />
+                          <div class=" text _2 ">Voir detail</div>
+                         </div>                 
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- contenu loisir -->
+        <div class="row" data-aos="zoom-in-up">
+            <div class="col-12 text-center bg-dark py-3 couleurTitre">
+                Contacts
+            </div>
+            <div class="col-12 text-justify pt-5 px-5">
+                    <p class="text-center h3" data-aos="flip-up">Je suis disponible pour toute réalisation d'un projet ou pour la collaboration à celui-ci.</p>
+                    <p class="text-center p-3 h4" data-aos="flip-up">N'hésiter pas à me contacter</p>
+            </div>
+            <div class="col-12">
+                <div class="row m-5 d-flex justify-content-center">
+                    <div class="p-3">
+                       <a href="https://www.facebook.com/mamitiana.mamitiana.900" target="_blank">
+                           <img src="assets/images/fb.png" class="img-fluid" width="100px" height="100px">
+                       </a> 
+                    </div>
+                    <div class="p-3">
+                       <a href="https://www.facebook.com/Bartholomew626" target="_blank">
+                           <img src="assets/images/page.png" class="img-fluid" width="100px" height="100px">
+                       </a> 
+                    </div>
+                    <div class="p-3">
+                       <a href="https://www.linkedin.com/in/mamitiana-ramaroson-00357a1a5/" target="_blank">
+                           <img src="assets/images/in.png" class="img-fluid" width="100px" height="100px">
+                       </a> 
+                    </div>      
+                </div>    
+            </div>       
+
+        </div>
+        <div class="row">
+                <div class="col-12 text-center bg-dark py-5 couleurTitre">
+                    &copy mamitiana 2020
+                </div>
+        </div>
+    </div>  
     <script src="assets/js/jquery.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
+    <!-- https://github.com/mattboldt/typed.js/ -->
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/parallax.js/1.4.2/parallax.min.js"></script>
+    <!-- debut test affichage -->
+      <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+      <script>
+        AOS.init();
+      </script>
+    <!-- fin test affichage -->
+    <script type="text/javascript">
+        var options = {
+          strings: ['Aina Mamitiana Ramaroson'],
+          typeSpeed: 75,
+          showCursor: false
+        };
+
+        var options2 = {
+          strings: ['Je suis un', 'Developpeur web Full - Stack'],
+          typeSpeed: 75,
+          showCursor: false
+        }; 
+
+        var typed = new Typed('.element', options);        
+
+        setTimeout(presentionPoste, 5000);
+        function presentionPoste(){
+            var typed = new Typed('.element2', options2);
+        }
+    </script>
 </body>
 </html>
